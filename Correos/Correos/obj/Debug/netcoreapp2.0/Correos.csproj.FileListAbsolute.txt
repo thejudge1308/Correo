@@ -1,0 +1,11 @@
+D:\Universidad\2018-1\BD\Proyecto\Correo\Correos\Correos\bin\Debug\netcoreapp2.0\Correos.deps.json
+D:\Universidad\2018-1\BD\Proyecto\Correo\Correos\Correos\bin\Debug\netcoreapp2.0\Correos.runtimeconfig.json
+D:\Universidad\2018-1\BD\Proyecto\Correo\Correos\Correos\bin\Debug\netcoreapp2.0\Correos.runtimeconfig.dev.json
+D:\Universidad\2018-1\BD\Proyecto\Correo\Correos\Correos\bin\Debug\netcoreapp2.0\Correos.dll
+D:\Universidad\2018-1\BD\Proyecto\Correo\Correos\Correos\bin\Debug\netcoreapp2.0\Correos.pdb
+D:\Universidad\2018-1\BD\Proyecto\Correo\Correos\Correos\obj\Debug\netcoreapp2.0\Correos.csprojAssemblyReference.cache
+D:\Universidad\2018-1\BD\Proyecto\Correo\Correos\Correos\obj\Debug\netcoreapp2.0\Correos.csproj.CoreCompileInputs.cache
+D:\Universidad\2018-1\BD\Proyecto\Correo\Correos\Correos\obj\Debug\netcoreapp2.0\Correos.AssemblyInfoInputs.cache
+D:\Universidad\2018-1\BD\Proyecto\Correo\Correos\Correos\obj\Debug\netcoreapp2.0\Correos.AssemblyInfo.cs
+D:\Universidad\2018-1\BD\Proyecto\Correo\Correos\Correos\obj\Debug\netcoreapp2.0\Correos.dll
+D:\Universidad\2018-1\BD\Proyecto\Correo\Correos\Correos\obj\Debug\netcoreapp2.0\Correos.pdb
