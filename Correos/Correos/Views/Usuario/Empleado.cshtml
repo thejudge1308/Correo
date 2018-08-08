@@ -1,0 +1,66 @@
+﻿@using Correos.Models;
+@model Usuario
+
+@{
+    ViewData["Title"] = "Empleado";
+}
+
+@{
+    var Empleados = (List<Usuario>)ViewData["usuarios"];
+}
+
+<h2>Empleados</h2>
+
+@if(Empleados.Count != 0) {
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Número</th>
+                <th scope="col">Rut</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Sexo</th>
+                <th scope="col">Domicilio</th>
+                <th scope="col">Previcion</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">Configuraciones</th>
+                <th scope="col">Eliminar</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                var auxiliar = 1;
+
+                foreach(Usuario item in (List<Usuario>)Empleados) {
+
+            <tr>
+                <th scope="row">@auxiliar</th>
+                <td>@item.Rut</td>
+                <td>@item.Nombre</td>
+                <td>@item.Sexo</td>
+                <td>@item.Domicilio</td>
+                <td>@item.Previ</td>
+                <td>@item.Fecha</td>
+                <td>@item.Fono</td>
+                <td><button class="btn btn-default">Click aquí</button></td>
+                <td><button class="btn btn-danger">Click aquí</button></td>
+            </tr>
+                    ++auxiliar;
+                }
+
+            }
+        </tbody>
+
+    </table>
+
+} else {
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1>No hay usuarios</h1>
+        </div>
+    </div>
+
+}
+
