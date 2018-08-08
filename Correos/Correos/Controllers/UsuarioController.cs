@@ -23,8 +23,28 @@ namespace Correos.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult Supervisor() {
             ViewData["usuarios"] = new Usuario().getSupervisores();
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Cajero() {
+            ViewData["usuarios"] = new Usuario().getCajeros();
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult AgregarCajero() {
+            ViewData["sucursales"] = new Sucursal().getSucursales();
+
+            //ViewData["Ingresar usuario."] = new Usuario().getCajeros();
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AgregarCajero(Usuario u) {
             return View();
         }
 

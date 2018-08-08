@@ -1,0 +1,111 @@
+﻿@using Correos.Models
+@model Usuario
+@{
+    ViewData["Title"] = "AgregarCajero";
+}
+
+@{
+    var sucursales = (List<string>)ViewData["sucursales"];
+}
+
+<h2>AgregarCajero</h2>
+
+@*@Html.AntiForgeryToken()*@
+<h4>Agregar usuario</h4>
+<hr />
+<form class="col-lg-12">
+
+
+    <div class="col-md-11 offset-md-1">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Rut, new { @class = "col-md-12 control-label" })
+            <div class="col-md-12">
+                @Html.TextBoxFor(m => m.Rut, new { @class = "form-control", placeholder = "", Style = "max-width:100%;" })
+
+                @Html.ValidationMessageFor(m => m.Rut, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Nombre, new { @class = "col-md-12 control-label" })
+            <div class="col-md-12">
+                @Html.TextBoxFor(m => m.Nombre, new { @class = "form-control", placeholder = "", Style = "max-width:100%;" })
+
+                @Html.ValidationMessageFor(m => m.Nombre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Sexo, new { @class = "col-md-12 control-label" })
+            <div class="col-md-12">
+                @Html.TextBoxFor(m => m.Sexo, new { @class = "form-control", placeholder = "", Style = "max-width:100%;" })
+
+                @Html.ValidationMessageFor(m => m.Sexo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Domicilio, new { @class = "col-md-12 control-label" })
+            <div class="col-md-12">
+                @Html.TextBoxFor(m => m.Domicilio, new { @class = "form-control", placeholder = "", Style = "max-width:100%;" })
+
+                @Html.ValidationMessageFor(m => m.Domicilio, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Fecha, new { @class = "col-md-12 control-label" })
+            <div class="col-md-12">
+                @Html.TextBoxFor(m => m.Fecha, new { @class = "form-control", placeholder = "", Style = "max-width:100%;" })
+
+                @Html.ValidationMessageFor(m => m.Fecha, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Fono, new { @class = "col-md-12 control-label" })
+            <div class="col-md-12">
+                @Html.TextBoxFor(m => m.Fono, new { @class = "form-control", placeholder = "", Style = "max-width:100%;" })
+
+                @Html.ValidationMessageFor(m => m.Fono, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12">
+                <label for="sel1">Selecciona una sucursal.</label>
+                <select class="form-control" id="sel1">
+                    @{
+                        if(sucursales == null) {
+                            <option>Nada</option>
+
+                        } else {
+                            foreach(var x in sucursales) {
+                                <option>@x</option>
+                            }
+                        }
+
+                    }
+
+
+
+
+
+                </select>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <div class=" col-md-10">
+                <br />
+                <input id="Guardar" value="Guardar" class="btn btn-primary" />
+            </div>
+            <a class="text-danger">@ViewBag.Message</a>
+        </div>
+    </div>
+</form>
+@section Scripts {
+    <script src="~/js/AgregarCajero.js"></script>
+}

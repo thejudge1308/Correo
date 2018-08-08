@@ -117,6 +117,32 @@ namespace Correos.Models
             return lista;
         }
 
+        public List<Usuario> getCajeros() {
+            List<Usuario> lista = new List<Usuario>();
+            using(var conn = new NpgsqlConnection(ConectorBaseDeDatos.path)) {
+                conn.Open();
+                string consulta = "Select * FROM empleado INNER JOIN supervisor on empleado.rut = supervisor.ref_empleado;";
+
+                // Retrieve all rows
+                using(var cmd = new NpgsqlCommand(consulta, conn))
+                using(var resultado = cmd.ExecuteReader())
+                    while(resultado.Read()) {
+                        //Debug.WriteLine(resultado.GetValue(0));
+                        string rut = resultado.IsDBNull(0) ? "-" : resultado.GetString(0);
+                        string nombre = resultado.IsDBNull(1) ? "-" : resultado.GetString(1);
+                        string sexo = resultado.IsDBNull(2) ? "-" : resultado.GetString(2);
+                        string domicilio = resultado.IsDBNull(3) ? "-" : resultado.GetString(3);
+                        string previ = resultado.IsDBNull(4) ? "-" : resultado.GetString(4);
+                        string fecha = resultado.IsDBNull(5) ? "-" : resultado.GetDate(5).ToString();
+                        string fono = resultado.IsDBNull(6) ? "-" : resultado.GetString(6);
+                        Usuario user = new Usuario(rut, nombre, sexo, domicilio, previ, fecha, fono);
+                        lista.Add(user);
+                    }
+
+            }
+            return lista;
+        }
+
 
 
 
