@@ -143,7 +143,27 @@ namespace Correos.Models
             return lista;
         }
 
+        public void AgregarUsuario(string rut,string nombre,string sexo, string domicilio,string prevision,string fecha,string num, string refdepa) {
+            
+            using(var conn = new NpgsqlConnection(ConectorBaseDeDatos.path)) {
+                conn.Open();
+                using(var cmd = new NpgsqlCommand()) {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "INSERT INTO empleado(rut, nombre, sexo, domicilio, prevision_salud, fecha_nacimiento, numero_telefono, ref_departamento)VALUES('"+rut+"','"+nombre+"','"+sexo+"', '"+domicilio+"', '"+prevision + "', "+ DateTime.Now+ " , '" + num+"', '"+refdepa+"'); ";
+                    Debug.WriteLine(cmd.CommandText);
+                    cmd.ExecuteNonQuery();
+                }
+            }
 
+            using(var conn = new NpgsqlConnection(ConectorBaseDeDatos.path)) {
+                conn.Open();
+                using(var cmd = new NpgsqlCommand()) {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "INSERT INTO cajero(ref_empleado)VALUES(rut); ";
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
 
 
     }

@@ -43,8 +43,22 @@ namespace Correos.Controllers
             return View();
         }
 
+        public class jsonCajero {
+            public string ru { get; set; }
+            public string no { get; set; }
+            public string se { get; set; }
+            public string dom { get; set; }
+            public string fe { get; set; }
+            public string fo { get; set; }
+            public string op { get; set; }
+            public string pre { get; set; }
+        }
         [HttpPost]
-        public IActionResult AgregarCajero(Usuario u) {
+        public IActionResult AgregarCajero(jsonCajero use) {
+
+            Usuario u = new Usuario();
+            u.AgregarUsuario(use.ru, use.no, use.se, use.dom, use.pre, use.fe, use.fo, use.op);
+
             return View();
         }
 

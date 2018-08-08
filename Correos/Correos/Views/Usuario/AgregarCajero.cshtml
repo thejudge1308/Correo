@@ -70,6 +70,15 @@
                 @Html.ValidationMessageFor(m => m.Fono, "", new { @class = "text-danger" })
             </div>
         </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Previ, new { @class = "col-md-12 control-label" })
+            <div class="col-md-12">
+                @Html.TextBoxFor(m => m.Previ, new { @class = "form-control", placeholder = "", Style = "max-width:100%;" })
+
+                @Html.ValidationMessageFor(m => m.Previ, "", new { @class = "text-danger" })
+            </div>
+        </div>
         <div class="form-group">
             <div class="col-md-12">
                 <label for="sel1">Selecciona una sucursal.</label>
@@ -92,9 +101,9 @@
 
         <div class="form-group">
             <div class=" col-md-10">
-                <br/>
+                <br />
                 <input id="Guardar" value="Guardar" class="btn btn-primary" />
-                <br/>
+                <br />
             </div>
             <a class="text-danger">@ViewBag.Message</a>
         </div>
