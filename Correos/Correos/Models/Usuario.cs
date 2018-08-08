@@ -121,7 +121,7 @@ namespace Correos.Models
             List<Usuario> lista = new List<Usuario>();
             using(var conn = new NpgsqlConnection(ConectorBaseDeDatos.path)) {
                 conn.Open();
-                string consulta = "Select * FROM empleado INNER JOIN supervisor on empleado.rut = supervisor.ref_empleado;";
+                string consulta = "Select * FROM empleado INNER JOIN cajero on empleado.rut = cajero.ref_empleado;";
 
                 // Retrieve all rows
                 using(var cmd = new NpgsqlCommand(consulta, conn))
@@ -149,7 +149,7 @@ namespace Correos.Models
                 conn.Open();
                 using(var cmd = new NpgsqlCommand()) {
                     cmd.Connection = conn;
-                    cmd.CommandText = "INSERT INTO empleado(rut, nombre, sexo, domicilio, prevision_salud, fecha_nacimiento, numero_telefono, ref_departamento)VALUES('"+rut+"','"+nombre+"','"+sexo+"', '"+domicilio+"', '"+prevision + "', "+ DateTime.Now+ " , '" + num+"', '"+refdepa+"'); ";
+                    cmd.CommandText = "INSERT INTO empleado(rut, nombre, sexo, domicilio, prevision_salud, fecha_nacimiento, numero_telefono, ref_departamento)VALUES('"+rut+"','"+nombre+"','"+sexo+"', '"+domicilio+"', '"+prevision + "', '"+fecha+ "' , '" + num+"', '"+refdepa+"'); ";
                     Debug.WriteLine(cmd.CommandText);
                     cmd.ExecuteNonQuery();
                 }
@@ -159,7 +159,7 @@ namespace Correos.Models
                 conn.Open();
                 using(var cmd = new NpgsqlCommand()) {
                     cmd.Connection = conn;
-                    cmd.CommandText = "INSERT INTO cajero(ref_empleado)VALUES(rut); ";
+                    cmd.CommandText = "INSERT INTO cajero(ref_empleado)VALUES('"+rut+"'); ";
                     cmd.ExecuteNonQuery();
                 }
             }
