@@ -23,6 +23,10 @@ namespace Correos.Controllers
             return View();
         }
 
+        public IActionResult Supervisor() {
+            ViewData["usuarios"] = new Usuario().getSupervisores();
+            return View();
+        }
 
     }
 }

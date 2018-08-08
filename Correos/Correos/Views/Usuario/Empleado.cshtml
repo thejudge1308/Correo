@@ -12,7 +12,31 @@
 <h2>Empleados</h2>
 
 @if(Empleados.Count != 0) {
-    <table class="table">
+
+<ul class="nav nav-tabs">
+
+    <li class="nav-item active">
+        <a class="nav-link " href="@Url.Action("Empleado", "Usuario")">Todos</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="@Url.Action("Supervisor", "Usuario")">Supervisor</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Bodeguero</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Distribuidor</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Recepcionista</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Cajero</a>
+    </li>
+</ul>
+
+
+    <table class="table table-responsive">
         <thead>
             <tr>
                 <th scope="col">Número</th>
@@ -23,10 +47,6 @@
                 <th scope="col">Previcion</th>
                 <th scope="col">Fecha</th>
                 <th scope="col">Telefono</th>
-                <th scope="col">Configuraciones</th>
-                <th scope="col">Eliminar</th>
-
-
             </tr>
         </thead>
         <tbody>
@@ -35,18 +55,16 @@
 
                 foreach(Usuario item in (List<Usuario>)Empleados) {
 
-            <tr>
-                <th scope="row">@auxiliar</th>
-                <td>@item.Rut</td>
-                <td>@item.Nombre</td>
-                <td>@item.Sexo</td>
-                <td>@item.Domicilio</td>
-                <td>@item.Previ</td>
-                <td>@item.Fecha</td>
-                <td>@item.Fono</td>
-                <td><button class="btn btn-default">Click aquí</button></td>
-                <td><button class="btn btn-danger">Click aquí</button></td>
-            </tr>
+                    <tr>
+                        <th scope="row">@auxiliar</th>
+                        <td>@item.Rut</td>
+                        <td>@item.Nombre</td>
+                        <td>@item.Sexo</td>
+                        <td>@item.Domicilio</td>
+                        <td>@item.Previ</td>
+                        <td>@item.Fecha</td>
+                        <td>@item.Fono</td>
+                    </tr>
                     ++auxiliar;
                 }
 
