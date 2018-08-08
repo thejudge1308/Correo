@@ -1,14 +1,12 @@
 ﻿@using Correos.Models
 @model Usuario
 @{
-    ViewData["Title"] = "AgregarCajero";
+    ViewData["Title"] = "Control de usuario";
 }
 
 @{
     var sucursales = (List<string>)ViewData["sucursales"];
 }
-
-<h2>AgregarCajero</h2>
 
 @*@Html.AntiForgeryToken()*@
 <h4>Agregar usuario</h4>
@@ -75,7 +73,7 @@
         <div class="form-group">
             <div class="col-md-12">
                 <label for="sel1">Selecciona una sucursal.</label>
-                <select class="form-control" id="sel1">
+                <select class="form-control" id="sele">
                     @{
                         if(sucursales == null) {
                             <option>Nada</option>
@@ -87,11 +85,6 @@
                         }
 
                     }
-
-
-
-
-
                 </select>
             </div>
 
@@ -99,13 +92,15 @@
 
         <div class="form-group">
             <div class=" col-md-10">
-                <br />
+                <br/>
                 <input id="Guardar" value="Guardar" class="btn btn-primary" />
+                <br/>
             </div>
             <a class="text-danger">@ViewBag.Message</a>
         </div>
     </div>
 </form>
+
 @section Scripts {
     <script src="~/js/AgregarCajero.js"></script>
 }
