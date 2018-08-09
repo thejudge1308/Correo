@@ -69,5 +69,19 @@ namespace Correos.Controllers
 
         }
 
+        [HttpGet]
+        public IActionResult ModificarUsuario(string rut) {
+            ViewData["sucursales"] = new Sucursal().getSucursales();
+            ViewData["usuario"] = new Usuario().getUsuarioPorRut(rut);
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult ModificarUsuario([FromBody] jsonCajero use) {
+            Debug.WriteLine(use.rut + " : "+use.nombre+" : "+use.sexo+" : "+use.domicilio+" : "+use.fecha+" : "+use.fono+" : "+use.opcion+" : "+use.previ);
+
+            return Json(true);
+        }
+
     }
 }
