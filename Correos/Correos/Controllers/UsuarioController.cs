@@ -83,5 +83,14 @@ namespace Correos.Controllers
             return Json(true);
         }
 
+        [HttpGet]
+        public IActionResult EliminarUsuario(string rut) {
+            /*
+             * Hacer que elimine aqui
+             */
+            return RedirectToAction("Cajero", "Usuario");
+
+        }
+
     }
 }
