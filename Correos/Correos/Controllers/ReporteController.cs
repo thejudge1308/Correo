@@ -20,6 +20,20 @@ namespace Correos.Controllers
         }
 
         [HttpGet]
+        public IActionResult Rank_1() {
+            List<Cartas_dep> lista = new Reporte().getNumeroCartas();
+            ViewData["lista"] = lista;
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Rank_2() {
+            List<Cartas_dep> lista = new Reporte().getNumeroDestinatarios();
+            ViewData["lista"] = lista;
+            return View();
+        }
+
+        [HttpGet]
         public IActionResult Contacto() {
             List<Repartidor_familiar> lista = new Reporte().getLista();
             ViewData["lista"] = lista;

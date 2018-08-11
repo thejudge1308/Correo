@@ -1,0 +1,54 @@
+﻿@using Correos.Models;
+@model Cartas_dep
+
+@{
+    ViewData["Title"] = "Numero de Destinatarios por sucursal";
+}
+
+@{
+    var cartas = (List<Cartas_dep>)ViewData["lista"];
+}
+
+<h1>Cantidad destinatarios por sucursal.</h1>
+<br />
+@if(cartas.Count != 0) {
+
+
+    <br />
+
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th scope="col">Número</th>
+                <th scope="col">Surcursal</th>
+                <th scope="col">Destinatarios</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                var auxiliar = 1;
+
+                foreach(Cartas_dep item in (List<Cartas_dep>)cartas) {
+
+                    <tr>
+                        <th scope="row">@auxiliar</th>
+                        <td>@item.nombre</td>
+                        <td>@item.cantidad</td>
+                    </tr>
+                    ++auxiliar;
+                }
+
+            }
+        </tbody>
+
+    </table>
+
+} else {
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1>No hay usuarios</h1>
+        </div>
+    </div>
+
+}
+
