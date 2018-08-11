@@ -1,0 +1,55 @@
+﻿@using Correos.Models;
+@model Repartidor_familiar
+
+@{
+    ViewData["Title"] = "Contacto";
+}
+
+@{
+    var Empleados = (List<Repartidor_familiar>)ViewData["lista"];
+}
+
+<h1>Contacto</h1>
+@if(Empleados.Count != 0) {
+
+    
+    <br />
+
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th scope="col">Número</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Familiar</th>
+                <th scope="col">Telefono</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                var auxiliar = 1;
+
+                foreach(Repartidor_familiar item in (List<Repartidor_familiar>)Empleados) {
+
+                    <tr>
+                        <th scope="row">@auxiliar</th>
+                        <td>@item.nombre</td>
+                        <td>@item.numero</td>
+                        <td>@item.familiar</td>
+                    </tr>
+                    ++auxiliar;
+                }
+
+            }
+        </tbody>
+
+    </table>
+
+} else {
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1>No hay usuarios</h1>
+        </div>
+    </div>
+
+}
+

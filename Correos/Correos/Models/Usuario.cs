@@ -123,7 +123,7 @@ namespace Correos.Models
             List<Usuario> lista = new List<Usuario>();
             using(var conn = new NpgsqlConnection(ConectorBaseDeDatos.path)) {
                 conn.Open();
-                string consulta = "Select * FROM empleado INNER JOIN cajero on empleado.rut = cajero.ref_empleado;";
+                string consulta = "Select * FROM empleado INNER JOIN cajero on empleado.rut = cajero.ref_empleado WHERE empleado.eliminado = 1;";
 
                 // Retrieve all rows
                 using(var cmd = new NpgsqlCommand(consulta, conn))
@@ -167,11 +167,42 @@ namespace Correos.Models
             }
         }
 
+        public void ModificarUsuario(string rut, string nombre, string sexo, string domicilio, string prevision, string fecha, string num, string refdepa) {
+            //rut, nombre, sexo, domicilio, prevision_salud, fecha_nacimiento, numero_telefono, ref_departamento
+            using(var conn = new NpgsqlConnection(ConectorBaseDeDatos.path)) {
+                conn.Open();
+                using(var cmd = new NpgsqlCommand()) {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "UPDATE empleado SET nombre='"+nombre+"' ,sexo = '"+sexo+ "',domicilio='"+domicilio+ "',prevision_salud='"+prevision+ "',fecha_nacimiento='"+fecha+ "',numero_telefono='"+num+ "',ref_departamento='"+ refdepa + "'  WHERE rut = '" + rut + "';";
+                    Debug.WriteLine(cmd.CommandText);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+
+          
+        }
+
+        public void EliminarUsuario(string rut) {
+            //rut, nombre, sexo, domicilio, prevision_salud, fecha_nacimiento, numero_telefono, ref_departamento
+            using(var conn = new NpgsqlConnection(ConectorBaseDeDatos.path)) {
+                conn.Open();
+                using(var cmd = new NpgsqlCommand()) {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "UPDATE empleado SET eliminado = 0  WHERE rut = '" + rut + "';";
+                    Debug.WriteLine(cmd.CommandText);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+
+
+        }
+
+
         public Usuario getUsuarioPorRut(string r) {
             Usuario usuario = null;
             using(var conn = new NpgsqlConnection(ConectorBaseDeDatos.path)) {
                 conn.Open();
-                string consulta = "SELECT * FROM public.empleado WHERE rut = '"+r+"';";
+                string consulta = "SELECT * FROM public.empleado WHERE rut = '"+r+ "' AND empleado.eliminado = 1;";
 
                 // Retrieve all rows
                 using(var cmd = new NpgsqlCommand(consulta, conn))

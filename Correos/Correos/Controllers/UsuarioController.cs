@@ -78,16 +78,14 @@ namespace Correos.Controllers
 
         [HttpPost]
         public IActionResult ModificarUsuario([FromBody] jsonCajero use) {
-            Debug.WriteLine(use.rut + " : "+use.nombre+" : "+use.sexo+" : "+use.domicilio+" : "+use.fecha+" : "+use.fono+" : "+use.opcion+" : "+use.previ);
-
+            Debug.WriteLine(use.rut + " : " + use.nombre + " : " + use.sexo + " : " + use.domicilio + " : " + use.fecha + " : " + use.fono + " : " + use.opcion + " : " + use.previ);
+            new Usuario().ModificarUsuario(use.rut, use.nombre, use.sexo, use.domicilio, use.previ, use.fecha, use.fono, use.opcion);
             return Json(true);
         }
 
         [HttpGet]
         public IActionResult EliminarUsuario(string rut) {
-            /*
-             * Hacer que elimine aqui
-             */
+            new Usuario().EliminarUsuario(rut);
             return RedirectToAction("Cajero", "Usuario");
 
         }
